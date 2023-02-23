@@ -5,6 +5,7 @@ public class EmployeeWage {
     public static final int PARTTIME = 2;
     public static final int EMP_WAGE_PH = 20;
     public static final int WORKING_DAYS_PM = 20;
+    public static final int MAX_HRS_IN_MONTH = 100;
 
     public static void main(String[] args) {
         System.out.println("Welcome To Employee Wage Computation Program");
@@ -12,9 +13,10 @@ public class EmployeeWage {
         int empHrs = 0;
         int empWage = 0;
         int totalEmpWage = 0;
-
-
-        for (int i = 0; i < WORKING_DAYS_PM; i++) {
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
+        while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < WORKING_DAYS_PM) {
+            totalWorkingDays++;
             double empCheck = Math.floor(Math.random() * 10) % 3;
             switch ((int) empCheck) {
                 case FULLTIME:
@@ -35,8 +37,10 @@ public class EmployeeWage {
                     System.out.println("Employee Is Absent So Wage is :" + empWage);
                     break;
             }
+            totalEmpHrs += empHrs;
+            System.out.println("Total Employee Working Hours is :" + totalEmpHrs);
             totalEmpWage += empWage;
-            System.out.println("Employee Wage For Month is :" +totalEmpWage);
+            System.out.println("Employee Wage For Month is :" + totalEmpWage);
         }
     }
 }
