@@ -9,12 +9,17 @@ public class EmployeeWage {
 
     public static void main(String[] args) {
         System.out.println("Welcome To Employee Wage Computation Program");
-
         int empHrs = 0;
         int empWage = 0;
         int totalEmpWage = 0;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
+
+        EmployeeWage ew = new EmployeeWage();
+        ew.computeEmpWage(empHrs, empWage, totalEmpWage, totalEmpHrs, totalWorkingDays);
+    }
+
+    public void computeEmpWage(int empHrs, int empWage, int totalEmpWage, int totalEmpHrs, int totalWorkingDays) {
         while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < WORKING_DAYS_PM) {
             totalWorkingDays++;
             double empCheck = Math.floor(Math.random() * 10) % 3;
