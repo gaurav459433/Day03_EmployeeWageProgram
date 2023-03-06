@@ -4,16 +4,32 @@ public class EmployeeWage {
     public static final int FULLTIME = 1;
     public static final int PARTTIME = 2;
 
+    private final String company;
+    private final int empRatePerHour;
+    private final int numOfWorkingDays;
+    private final int maxHoursPerMonth;
+
     public static void main(String[] args) {
         System.out.println("Welcome To Employee Wage Computation Program");
 
-        computeEmpWage("DMart",20,2,10);
-        computeEmpWage("Reliance",15,5,25);
-        computeEmpWage("TCS",10,6,30);
+        EmployeeWage dmart = new EmployeeWage("DMart", 20, 2, 10);
+        EmployeeWage reliance = new EmployeeWage("Reliance", 15, 5, 25);
+        EmployeeWage tcs = new EmployeeWage("TCS", 10, 6, 30);
+        dmart.computeEmpWage();
+        reliance.computeEmpWage();
+        tcs.computeEmpWage();
     }
 
-    public static int computeEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
-        int totalEmpWage = 0,totalWorkingDays = 0,totalEmpHrs = 0;
+    public EmployeeWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+        this.company = company;
+        this.empRatePerHour = empRatePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+
+    public int computeEmpWage() {
+
+        int totalEmpWage = 0, totalWorkingDays = 0, totalEmpHrs = 0;
         while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
             int empHrs = 0;
             totalWorkingDays++;
@@ -39,9 +55,9 @@ public class EmployeeWage {
             System.out.println("Total Employee Working Hours is :" + totalEmpHrs);
             int empWage = empHrs * empRatePerHour;
             totalEmpWage += empWage;
-            System.out.println("Employee Wage For Month is :" + totalEmpWage);
+            System.out.println("Day-" + totalWorkingDays + " Employee Wage is :" + empWage);
         }
-        System.out.println("Total Employee Wage for Company "+company+" is:"+ totalEmpWage);
+        System.out.println("Total Employee Wage for Company " + company + " is:" + totalEmpWage);
         return totalEmpWage;
     }
 }
